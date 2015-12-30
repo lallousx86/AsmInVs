@@ -3,3 +3,5 @@
 Debug/
 Release/
 ipch/
+/temp
+*.opendb

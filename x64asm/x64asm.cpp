@@ -1,5 +1,11 @@
 #include "stdafx.h"
+/*
+Code copyright Elias Bachaalany <lallousz-x86@yahoo.com>
 
+You may freely use this code. Please give credits where due.
+
+http://lallouslab.net
+*/
 //--------------------------------------------------------------------------
 #pragma pack(push, 1)
 struct MyStruct
@@ -85,7 +91,7 @@ int _tmain(int argc, _TCHAR* argv[])
     //access_extern_data();
     //MessageBoxA(0, "Hello", "World", MB_OK);
     //GetForegroundWindow
-    //hello_world_asm();
+    hello_world_asm();
 
     //__int64 add_result;
     //(void)add_by_ref(1981, 4, &add_result);
@@ -94,7 +100,7 @@ int _tmain(int argc, _TCHAR* argv[])
     //init_struct(&st);
 
     //call_cause_av_bad();
-    call_cause_av_good();
+    //call_cause_av_good();
 
     return 0;
 }

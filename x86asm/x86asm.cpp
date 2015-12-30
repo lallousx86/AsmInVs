@@ -1,4 +1,11 @@
 #include "stdafx.h"
+/*
+Code copyright Elias Bachaalany <lallousz-x86@yahoo.com>
+
+You may freely use this code. Please give credits where due.
+
+http://lallouslab.net
+*/
 
 //--------------------------------------------------------------------------
 int calculate(int count)

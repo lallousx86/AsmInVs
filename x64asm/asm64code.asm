@@ -1,4 +1,10 @@
 ; -----------------------------------------------------------------------------------------------------------	
+; Code copyright Elias Bachaalany <lallousz-x86@yahoo.com>
+; You may freely use this code. Please give credits where due.
+; http://lallouslab.net
+
+
+; -----------------------------------------------------------------------------------------------------------	
 PUBLIC hello_world_asm
 PUBLIC access_extern_data
 PUBLIC add_by_ref
@@ -15,12 +21,11 @@ fptr  dq ?
 sig dq ?
 MyStruct ends
 
-
 ; -----------------------------------------------------------------------------------------------------------	
 ; Data segment
 ; -----------------------------------------------------------------------------------------------------------	
 _DATA SEGMENT
-	hello_msg db "Hello world", 0
+	hello_msg db "Hello world from x64 ASM", 0
 	info_msg  db "Info", 0
 	buf dw 2048 DUP ('eb')
 _DATA ENDS
