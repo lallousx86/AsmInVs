@@ -3,5 +3,6 @@
 Debug/
 Release/
 ipch/
-/temp
+temp/
 *.opendb
+*.vc.db

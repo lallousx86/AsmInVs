@@ -28,6 +28,7 @@ extern "C"
     void cause_av_bad();
     void cause_av_good();
     void cause_av_good2();
+    int sum_array(int size);
 };
 
 static char c_message[] = "Hello world";
@@ -35,12 +36,14 @@ static char c_message[] = "Hello world";
 //--------------------------------------------------------------------------
 extern "C"
 {
+    // Variables exported to the assembly module
     char c_ext_byte = 1;
     unsigned short c_ext_word = 2;
     long c_ext_dword = 3;
     __int64 c_ext_qword = 4;
     void *c_ext_ptr = (void *)(5);
     void c_ext_my_function();
+    int c_ext_my_array[5] = { 100, -100, 50, -50, 1981 };
 }
 
 //--------------------------------------------------------------------------
@@ -91,7 +94,7 @@ int _tmain(int argc, _TCHAR* argv[])
     //access_extern_data();
     //MessageBoxA(0, "Hello", "World", MB_OK);
     //GetForegroundWindow
-    hello_world_asm();
+    //hello_world_asm();
 
     //__int64 add_result;
     //(void)add_by_ref(1981, 4, &add_result);
@@ -101,6 +104,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
     //call_cause_av_bad();
     //call_cause_av_good();
+
+    printf("%d\n", sum_array(_countof(c_ext_my_array)));
 
     return 0;
 }

@@ -5,6 +5,7 @@
 
 
 ; -----------------------------------------------------------------------------------------------------------	
+; Exported symbols
 PUBLIC hello_world_asm
 PUBLIC access_extern_data
 PUBLIC add_by_ref
@@ -12,6 +13,7 @@ PUBLIC init_struct
 PUBLIC cause_av_bad
 PUBLIC cause_av_good
 PUBLIC cause_av_good2
+PUBLIC sum_array
 
 ; -----------------------------------------------------------------------------------------------------------	
 MyStruct struct
@@ -45,7 +47,31 @@ EXTERN c_ext_dword: dword
 EXTERN c_ext_qword: qword
 EXTERN c_ext_ptr: qword
 EXTERN c_ext_my_function: PROC
+EXTERN c_ext_my_array: dword
 
+; -----------------------------------------------------------------------------------------------------------	
+; Sum an external array given its size
+; int access_array(int size)
+sum_array PROC
+	push rbp
+	mov rbp, rsp
+
+	push rsi
+	
+	mov rsi, offset c_ext_my_array
+	xor rax, rax
+	xor rdx, rdx
+  @@1:
+    lodsd
+	add rdx, rax
+	loop @@1
+	pop rsi
+
+	mov rsp, rbp
+	pop rbp
+
+	ret
+sum_array ENDP
 
 ; -----------------------------------------------------------------------------------------------------------	
 ; AV generating function
