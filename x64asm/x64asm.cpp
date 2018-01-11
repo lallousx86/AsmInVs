@@ -65,14 +65,29 @@ void call_cause_av_good()
 {
     __try
     {
-        printf("Calling faulty ASM function that has unwind info...\n");
+        printf("Calling faulty ASM function " __FUNCTION__ " that has unwind info...\n");
         cause_av_good();
     }
     __except (EXCEPTION_EXECUTE_HANDLER)
     {
         printf("caught exception...\n");
     }
-    printf("function returned!\n");
+    printf("function " __FUNCTION__ " returned!\n");
+}
+
+//--------------------------------------------------------------------------
+void call_cause_av_good2()
+{
+    __try
+    {
+        printf("Calling faulty ASM " __FUNCTION__ " that has unwind info...\n");
+        cause_av_good2();
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        printf("caught exception...\n");
+    }
+    printf("function " __FUNCTION__ " returned!\n");
 }
 
 //--------------------------------------------------------------------------
@@ -104,6 +119,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
     //call_cause_av_bad();
     //call_cause_av_good();
+    call_cause_av_good2();
 
     printf("%d\n", sum_array(_countof(c_ext_my_array)));
 

@@ -123,8 +123,10 @@ cause_av_good ENDP
 cause_av_good2 PROC FRAME
 	sub rsp, 020h ; allocate stack space
 	.allocstack 020h ; encode that change
+
 	push rbp ; save old frame pointer
 	.pushreg rbp ; encode stack operation
+
 	mov rbp, rsp ; set new frame pointer
 	.setframe rbp, 0 ; encode frame pointer
 	.endprolog
@@ -137,9 +139,10 @@ cause_av_good2 PROC FRAME
 	mov rax, [rax] ; cause AV
 
 	; properly restore the stack pointer (in case exception did not happen or the handler corrected the situation)
-	add rsp, (080h + 020h)
-
+	mov rsp, rbp
 	pop rbp
+	add rsp, 020h
+
 	ret
 cause_av_good2 ENDP
 
